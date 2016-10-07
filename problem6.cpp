@@ -1,27 +1,26 @@
 #include <iostream>
 
-using namespace std;
-
-int sumOfSquaresOfFirstKNumbers(int n) {
-	int sum = 0;
-	int k = n;
-	while (k > 0) {
-		sum = sum + k*k;
-		--k;
+long long sumOfSquares(long long from, long long to) {
+	long long total = 0;
+	for (long long i = from; i <= to; i++) {
+		total += i * i;
 	}
-	return sum;
+	return total;
 }
 
-int squareOfSumOffirstKNumbers(int k) { 
-	return ((k*(k+1))/2)*((k*(k+1))/2);
+long long squareOfSum(long long from, long long to) {
+	long long total = 0;
+	for (long long i = from; i <= to; i++) {
+		total += i;
+	}
+	total = total * total;
+	return total;
 }
 
-int differenceBetweenSumOfSquaresAndSquareOfSum(int k) {
-	return squareOfSumOffirstKNumbers(k) - sumOfSquaresOfFirstKNumbers(k);
+long long sumSquareDifference(long long from, long long to) {
+	return squareOfSum(from, to) - sumOfSquares(from, to);
 }
 
 int main() {
-	cout << squareOfSumOffirstKNumbers(100) << endl;
-	cout << sumOfSquaresOfFirstKNumbers(100) << endl;
-	cout << differenceBetweenSumOfSquaresAndSquareOfSum(100) << endl;
+	std::cout << sumSquareDifference(1, 100) << std::endl;
 }
